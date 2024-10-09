@@ -1,0 +1,16 @@
+name: Check Redis version
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs - on: ubuntu - latest
+    steps:
+      - name: Cache APT packages
+        uses: awalsh128/cache-apt-pkgs-action@v1
+        with:
+          packages: redis-server
+      - name: Check Redis version
+        run: |
+          redis-server --version
